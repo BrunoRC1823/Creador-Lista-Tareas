@@ -1,3 +1,5 @@
+import checkComplete from "./components/completarTarea.js";
+import eliminarIcon from "./components/eliminarIcon.js";
 (() => {
     const btn = document.querySelector("[data-form-btn]")
 
@@ -9,8 +11,6 @@
         const contenidoTarea = document.createElement('div');
         const tituloTarea = document.createElement('span');
         const valor = input.value;
-        const contenido = `
-    <i class="fas fa-trash-alt trashIcon icon"></i>`;
 
         input.value = '';
         tarea.classList.add('card');
@@ -21,20 +21,9 @@
         contenidoTarea.appendChild(tituloTarea);
 
         tarea.appendChild(contenidoTarea);
+        tarea.appendChild(eliminarIcon());
         lista.appendChild(tarea);
     };
 
-    btn.addEventListener("click", createTask)
-    const checkComplete = () => {
-        const i = document.createElement("i");
-        i.classList.add('far', 'fa-check-square', 'icon');
-        i.addEventListener("click", completarTarea);
-        return i;
-    };
-    const completarTarea = (evento) => {
-        const elemento = evento.target
-        elemento.classList.toggle('fas');
-        elemento.classList.toggle('completeIcon');
-        elemento.classList.toggle('far');
-    };
+    btn.addEventListener("click", createTask);
 })();
